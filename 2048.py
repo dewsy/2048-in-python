@@ -5,17 +5,17 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 color_code = {
     '-': 0,
-    2: 1,
-    4: 2,
-    8: 3,
-    16: 4,
-    32: 5,
-    64: 6,
-    128: 7,
-    256: 8,
-    512: 9,
-    1024: 10,
-    2048: 11
+    2: 20,
+    4: 25,
+    8: 30,
+    16: 35,
+    32: 41,
+    64: 45,
+    128: 50,
+    256: 55,
+    512: 60,
+    1024: 65,
+    2048: 70
     }
 
 table = {
@@ -70,6 +70,7 @@ def printtable():
     for k, v in table.items():
         score.append(v)
     score = filter(lambda x: type(x) == int, score)
+    print("You can 'save' and 'load'!")
     print('\n')
     print("Score: ", sum(score))
     print('\n')
