@@ -62,6 +62,7 @@ def printtable():
         '{background} {:^4}'.format(table['24'], background=bg(color_code[table['24']])),
         '{background} {:^4}'.format(table['34'], background=bg(color_code[table['34']])),
         '{background} {:^4}'.format(table['44'], background=bg(color_code[table['44']])))
+    print(bg(0))
 
 
 def span2():
