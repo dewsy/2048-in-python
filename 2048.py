@@ -1,10 +1,5 @@
 import random
-from colored import fg, bg, attr
-
-
-def color(x):
-    return bg(color_code[table[x]])
-
+from colored import fg, bg
 
 color_code = {
     '-': 0,
@@ -38,6 +33,33 @@ table = {
     '24': '-',
     '34': '-',
     '44': '-'}
+
+
+def savegame():
+    with open('savegame.csv', 'w') as f:
+        t = []
+        for k, v in table.items():
+            t.append('{key}: {value}'.format(key=str(k), value=(v)))
+        f.write(','.join(t))
+    print('Saved!')
+
+
+def loadgame():
+
+    def isint(x):
+        try:
+            int(x)
+            return int(x)
+        except ValueError:
+            return str(x)
+
+    with open('savegame.csv', 'r') as f:
+        global table
+        table = {}
+        t = f.read().split(',')
+        for i in t:
+            values = i.split(': ')
+            table[values[0]] = isint(values[1])
 
 
 def printtable():
@@ -170,7 +192,7 @@ def right():
 
 
 def keypress():
-    valid = ['a', 'w', 's', 'd']
+    valid = ['a', 'w', 's', 'd', 'save', 'load']
     while True:
         try:
             L = input('next move: ')
@@ -192,13 +214,19 @@ while True:
         if L == 'w':
             up()
         elif L == 's':
-            pass
             down()
         elif L == 'a':
             left()
         elif L == 'd':
             right()
-        span2()
+        elif L == 'save':
+            savegame()
+        elif L == 'load':
+            loadgame()
+        if L == 'load' or L == 'save':
+            pass
+        else:
+            span2()
         printtable()
     except IndexError:
         print('\nNot allowed move!')
