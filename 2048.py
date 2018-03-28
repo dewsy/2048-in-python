@@ -1,5 +1,7 @@
 import random
-from colored import fg, bg
+from colored import fg, bg, attr
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
 
 color_code = {
     '-': 0,
@@ -63,6 +65,7 @@ def loadgame():
 
 
 def printtable():
+    os.system('cls' if os.name == 'nt' else 'clear')
     score = []
     for k, v in table.items():
         score.append(v)
@@ -90,7 +93,7 @@ def printtable():
         '{background} {:^4}'.format(table['24'], background=bg(color_code[table['24']])),
         '{background} {:^4}'.format(table['34'], background=bg(color_code[table['34']])),
         '{background} {:^4}'.format(table['44'], background=bg(color_code[table['44']])))
-    print(bg(0))
+    print(attr(0))
 
 
 def span2():
