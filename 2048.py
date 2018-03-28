@@ -63,6 +63,12 @@ def loadgame():
 
 
 def printtable():
+    score = []
+    for k, v in table.items():
+        score.append(v)
+    score = filter(lambda x: type(x) == int, score)
+    print('\n')
+    print("Score: ", sum(score))
     print('\n')
     print(
         '{background} {:^4}'.format(table['11'], background=bg(color_code[table['11']])),
@@ -209,7 +215,6 @@ span2()
 printtable()
 while True:
     try:
-        pass
         L = keypress()
         if L == 'w':
             up()
